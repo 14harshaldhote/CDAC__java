@@ -1,0 +1,24 @@
+package day2programs;
+
+import java.util.Scanner;
+
+public class secondif {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int a = scanner.nextInt();
+        
+        if(a>5) {
+        	
+        	if(a<10){
+        		System.out.print("Number is less than 10");
+        		
+        	}
+        }
+	}
+
+}
