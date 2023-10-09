@@ -10,4 +10,5 @@ package constructor;
  */
 public class iceCream {
     
+    
 }
