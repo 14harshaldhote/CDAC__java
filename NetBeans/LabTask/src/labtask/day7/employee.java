@@ -9,6 +9,9 @@ package labtask.day7;
 class infoemp{
     String name;
     int id;
+    {
+    int a=10;}
+    
     public infoemp(String a,int b){
            name=a;
            id=b;
