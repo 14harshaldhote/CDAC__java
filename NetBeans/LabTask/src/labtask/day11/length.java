@@ -2,17 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package assignments;
+package labtask.day11;
 
-
-public class reverse {
-    
-    static String s = "My Name is Khan";
+/**
+ *
+ * @author harshalsMac
+ */
+public class length {
     
     public static void main(String[] args) {
-        reverse r = new reverse();
-        StringBuilder reversedString = new StringBuilder(r.s).reverse();
-        System.out.println(reversedString);
+        
+        String myString = "Hello, World!";
+
+      
+        int length = myString.length();
+        System.out.println("The length of the string is: " + length);
     }
-    
 }
+    
+
