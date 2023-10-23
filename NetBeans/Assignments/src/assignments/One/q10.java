@@ -25,7 +25,7 @@ class operations{
                 max = number;
             }
         }
-        return max;
+        return max; 
     }
 
     public static int findMin(int[] numbers) {
