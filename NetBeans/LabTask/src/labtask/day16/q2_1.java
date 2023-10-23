@@ -11,17 +11,18 @@ import java.util.Date;
  *
  * @author harshalsMac
  */
-public class q1_3 {
-        public static void main(String[] args) {
-        Date d=new Date();
-        SimpleDateFormat s1=new SimpleDateFormat("MMM-dd-yyyy");
-        
-        String strDat1e=s1.format(d);
-        System.out.println(strDat1e);
+public class q2_1 {
+    public static void main(String[] args) {
+        String date="2023-10-23";
+        SimpleDateFormat s2=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d2=s2.parse(date);
+            System.err.println(d2);
+            
+        }
+        catch(Exception e){}
+       
         
     }
     
 }
-   
-    
-
