@@ -6,6 +6,7 @@ package testcollection;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -48,6 +49,19 @@ public class TestCollection {
         l3.add(new Date());
         
          System.out.println(l3);
+         
+         
+         
+          for(Object o:l3){
+              System.out.println(o);
+          }
+          
+        System.out.println("------------------------------------------------------------------------");
+        
+        Iterator it=l3.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
     
 }
