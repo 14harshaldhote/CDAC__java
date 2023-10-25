@@ -5,6 +5,7 @@
 package testcollection;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class TestCollection {
      l.add('C');
      l.add('A');
      l.add('D');
+     l.add(4,'Z');
      
      
      l.add(3,'E');
@@ -37,6 +39,15 @@ public class TestCollection {
      
         System.out.println(l);
         System.out.println(l.get(3));
+         System.out.println("------------------------------------------------------------------------");
+        
+        List l3=new ArrayList(); 
+        l3.add(2);
+        l3.add("SoftPolynomial");
+        l3.add(3232.2323);
+        l3.add(new Date());
+        
+         System.out.println(l3);
     }
     
 }
