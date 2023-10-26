@@ -31,7 +31,7 @@ class Employee implements Comparable<Employee> {
 
     @Override
     public int compareTo(Employee other) {
-        // Compare employees based on their IDs (natural order)
+        
         return Integer.compare(this.id, other.id);
     }
 
@@ -57,19 +57,7 @@ public class q1 {
         }
 
         
-        Comparator<Employee> nameComparator = new Comparator<Employee>() {
-            @Override
-            public int compare(Employee e1, Employee e2) {
-                return e1.getName().compareTo(e2.getName());
-            }
-        };
-
-     
-        Collections.sort(employees, nameComparator);
-        System.out.println("\nSorted by Name (custom order):");
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+        
     }
 }
 
