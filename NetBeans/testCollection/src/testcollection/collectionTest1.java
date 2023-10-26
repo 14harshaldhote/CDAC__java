@@ -54,8 +54,8 @@ public class collectionTest1 {
    System.out.println(m);
    System.out.println(l);
    
-    m1;
-         m1 = Collection.copy(l,Arrays.asList(5,2,9));
+
+    Integer    m1 = Collection.copy(l,Arrays.asList(5,2,9));
    System.out.println(m1);
    System.out.println(l);
    
