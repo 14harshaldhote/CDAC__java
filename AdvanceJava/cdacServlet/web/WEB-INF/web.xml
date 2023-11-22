@@ -4,8 +4,35 @@
         <servlet-name>tryServletLive</servlet-name>
         <servlet-class>tryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>testContentLive</servlet-name>
+        <servlet-class>concept.testContent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>infoMultiLive</servlet-name>
+        <servlet-class>newInfoFetch.infoMulti</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>valueMultiLive</servlet-name>
+        <servlet-class>newInfoFetch.valueMulti</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>tryServletLive</servlet-name>
         <url-pattern>/Live</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testContentLive</servlet-name>
+        <url-pattern>/Liveee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>infoMultiLive</servlet-name>
+        <url-pattern>/infoMultiLive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>valueMultiLive</servlet-name>
+        <url-pattern>/valueMultiLive</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>multiInfo.html</welcome-file>
+    </welcome-file-list>
 </web-app>

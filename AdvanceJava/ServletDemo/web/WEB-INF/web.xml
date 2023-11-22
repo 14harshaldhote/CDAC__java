@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet>
+        <servlet-name>ServletLife</servlet-name>
+        <servlet-class>ServletLifeCycle</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>FetchMultipleInfo</servlet-name>
+        <servlet-class>clientToServer.FetchMultipleInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletLife</servlet-name>
+        <url-pattern>/Life</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Basic</servlet-name>
+        <servlet-class>concept.BasicConcept</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Basic</servlet-name>
+        <!--    Internal Alliase-->
+        <url-pattern>/concept</url-pattern>
+        <!--    External Alliase-->
+    </servlet-mapping>
+   
+
+    
+    <servlet-mapping>
+        <servlet-name>FetchMultipleInfo</servlet-name>
+        <url-pattern>/FetchMultipleInfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FetchMultiValue</servlet-name>
+        <servlet-class>clientToServer.FetchMultiValue</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FetchMultiValue</servlet-name>
+        <url-pattern>/FetchMultiValue</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>multiValue.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
