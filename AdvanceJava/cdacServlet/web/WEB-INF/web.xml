@@ -16,6 +16,14 @@
         <servlet-name>valueMultiLive</servlet-name>
         <servlet-class>newInfoFetch.valueMulti</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Department</servlet-name>
+        <servlet-class>electricity.Department</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinalBill</servlet-name>
+        <servlet-class>electricity.FinalBill</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>tryServletLive</servlet-name>
         <url-pattern>/Live</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>valueMultiLive</servlet-name>
         <url-pattern>/valueMultiLive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Department</servlet-name>
+        <url-pattern>/Department</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinalBill</servlet-name>
+        <url-pattern>/FinalBill</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>multiInfo.html</welcome-file>
