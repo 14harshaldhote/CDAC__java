@@ -1,35 +1,46 @@
-package clientToServer;
+package session;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
-@WebServlet(name = "FetchMultipleInfo", urlPatterns = {"/FetchMultipleInfo"})
-public class FetchMultipleInfo extends HttpServlet {
+@WebServlet(name = "OnlineShop", urlPatterns = {"/OnlineShop"})
+public class OnlineShop extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FetchMultipleInfo</title>");            
+            out.println("<title>Servlet OnlineShop</title>");            
             out.println("</head>");
             out.println("<body>");
-            Enumeration en=request.getParameterNames();
-            while(en.hasMoreElements()){
-                String pName=(String)en.nextElement();
-                String pValue=request.getParameter(pName);
-                out.println("Parameter Name : "+pName+"    Parameter Value : "+pValue+"<br/>");
-            }
+            String proName=request.getParameter("pn");
+            String proQuan=request.getParameter("pq");
+            String but1=request.getParameter("atc");
+            String but2=request.getParameter("bill");
             
+            if(but1 != null){
+                Cookie ck=new Cookie(proName,proQuan);
+                ck.setMaxAge(60*60*24*7);
+                response.addCookie(ck);
+                response.sendRedirect("shopping.html");
+            }
+            if(but2 != null){
+                out.println("<h1>You have Purchased</h1>");
+                Cookie ck[]=request.getCookies();
+                for(Cookie c:ck){
+                    out.println(c.getName()+" : "+c.getValue()+"<br/>");
+                }
+            }
             out.println("</body>");
             out.println("</html>");
         }

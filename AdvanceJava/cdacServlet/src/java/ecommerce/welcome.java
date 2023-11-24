@@ -1,4 +1,8 @@
-package clientToServer;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package ecommerce;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,10 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
-@WebServlet(name = "FetchMultipleInfo", urlPatterns = {"/FetchMultipleInfo"})
-public class FetchMultipleInfo extends HttpServlet {
+/**
+ *
+ * @author harshalsMac
+ */
+@WebServlet(name = "welcome", urlPatterns = {"/welcome"})
+public class welcome extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,16 +27,10 @@ public class FetchMultipleInfo extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FetchMultipleInfo</title>");            
+            out.println("<title>Servlet welcome</title>");            
             out.println("</head>");
             out.println("<body>");
-            Enumeration en=request.getParameterNames();
-            while(en.hasMoreElements()){
-                String pName=(String)en.nextElement();
-                String pValue=request.getParameter(pName);
-                out.println("Parameter Name : "+pName+"    Parameter Value : "+pValue+"<br/>");
-            }
-            
+            out.println("<h1>Servlet welcome at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

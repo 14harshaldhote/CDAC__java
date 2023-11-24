@@ -24,6 +24,22 @@
         <servlet-name>FinalBill</servlet-name>
         <servlet-class>electricity.FinalBill</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginSe</servlet-name>
+        <servlet-class>ecommerce.loginSe</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutSe</servlet-name>
+        <servlet-class>ecommerce.logoutSe</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>productPage</servlet-name>
+        <servlet-class>ecommerce.productPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>welcome</servlet-name>
+        <servlet-class>ecommerce.welcome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>tryServletLive</servlet-name>
         <url-pattern>/Live</url-pattern>
@@ -48,7 +64,23 @@
         <servlet-name>FinalBill</servlet-name>
         <url-pattern>/FinalBill</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginSe</servlet-name>
+        <url-pattern>/loginSe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutSe</servlet-name>
+        <url-pattern>/logoutSe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productPage</servlet-name>
+        <url-pattern>/productPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>welcome</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>multiInfo.html</welcome-file>
+        <welcome-file>login.html</welcome-file>
     </welcome-file-list>
 </web-app>

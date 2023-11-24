@@ -1,16 +1,16 @@
-package clientToServer;
+package session;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
-@WebServlet(name = "FetchMultipleInfo", urlPatterns = {"/FetchMultipleInfo"})
-public class FetchMultipleInfo extends HttpServlet {
+@WebServlet(name = "LoginServ", urlPatterns = {"/LoginServ"})
+public class LoginServ extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,16 +20,23 @@ public class FetchMultipleInfo extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FetchMultipleInfo</title>");            
+            out.println("<title>Servlet LoginServ</title>");            
             out.println("</head>");
             out.println("<body>");
-            Enumeration en=request.getParameterNames();
-            while(en.hasMoreElements()){
-                String pName=(String)en.nextElement();
-                String pValue=request.getParameter(pName);
-                out.println("Parameter Name : "+pName+"    Parameter Value : "+pValue+"<br/>");
-            }
+            String user=request.getParameter("un");
+            String pass=request.getParameter("pass");
             
+            if("Ramesh".equals(user) && "ram".equals(pass)){
+                //if session is already created then it refer to old session otherwise it will create new session
+                HttpSession ses=request.getSession();
+                ses.setAttribute("sessionUser", user);
+                
+                response.sendRedirect("WelcomeServ");
+            }
+            else{
+                response.sendRedirect("login.html");
+            }
+         
             out.println("</body>");
             out.println("</html>");
         }

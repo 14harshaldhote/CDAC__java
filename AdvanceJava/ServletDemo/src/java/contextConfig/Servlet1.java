@@ -1,16 +1,15 @@
-package clientToServer;
+package contextConfig;
 
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
-@WebServlet(name = "FetchMultipleInfo", urlPatterns = {"/FetchMultipleInfo"})
-public class FetchMultipleInfo extends HttpServlet {
+public class Servlet1 extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,16 +19,16 @@ public class FetchMultipleInfo extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FetchMultipleInfo</title>");            
+            out.println("<title>Servlet Servlet1</title>");            
             out.println("</head>");
             out.println("<body>");
-            Enumeration en=request.getParameterNames();
-            while(en.hasMoreElements()){
-                String pName=(String)en.nextElement();
-                String pValue=request.getParameter(pName);
-                out.println("Parameter Name : "+pName+"    Parameter Value : "+pValue+"<br/>");
-            }
+            ServletContext ctx=getServletContext();
             
+            ctx.setAttribute("area", "mate chowk");
+            ServletConfig cfg=getServletConfig();
+            
+            out.println("<h3>I am "+cfg.getInitParameter("name")+" from "+cfg.getInitParameter("city")+" taking traing from "+ctx.getInitParameter("trainer")+" in "+ctx.getInitParameter("institute")+"</h3>");
+            out.println(ctx.getAttribute("area"));
             out.println("</body>");
             out.println("</html>");
         }

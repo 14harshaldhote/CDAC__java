@@ -1,4 +1,4 @@
-package clientToServer;
+package ecommerce;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,29 +7,35 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
-@WebServlet(name = "FetchMultipleInfo", urlPatterns = {"/FetchMultipleInfo"})
-public class FetchMultipleInfo extends HttpServlet {
+@WebServlet(name = "LoginSe", urlPatterns = {"/LoginSe"})
+public class loginSe extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use the following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FetchMultipleInfo</title>");            
+            out.println("<title>Servlet LoginSe</title>");            
             out.println("</head>");
             out.println("<body>");
-            Enumeration en=request.getParameterNames();
-            while(en.hasMoreElements()){
-                String pName=(String)en.nextElement();
-                String pValue=request.getParameter(pName);
-                out.println("Parameter Name : "+pName+"    Parameter Value : "+pValue+"<br/>");
-            }
             
+            String user = request.getParameter("un");
+            String pass = request.getParameter("pass");
+
+            if ("Ramesh".equals(user) && "ram".equals(pass)) {
+                // If session is already created, then it refers to the old session; otherwise, it will create a new session
+                jakarta.servlet.http.HttpSession ses = request.getSession();
+                ses.setAttribute("sessionUser", user);
+
+                response.sendRedirect("productPage");
+            } else {
+                response.sendRedirect("login.html");
+            }
+
             out.println("</body>");
             out.println("</html>");
         }

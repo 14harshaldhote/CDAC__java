@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">-->
 <web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <context-param>
+        <param-name>trainer</param-name>
+        <param-value>Anup Sir</param-value>
+    </context-param>
+    <context-param>
+        <param-name>institute</param-name>
+        <param-value>CDac</param-value>
+    </context-param>
     <servlet>
         <servlet-name>ServletLife</servlet-name>
         <servlet-class>ServletLifeCycle</servlet-class>
     </servlet>
-    
     <servlet>
-        <servlet-name>FetchMultipleInfo</servlet-name>
-        <servlet-class>clientToServer.FetchMultipleInfo</servlet-class>
+        <servlet-name>Servlet1</servlet-name>
+        <servlet-class>contextConfig.Servlet1</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>Ramesh</param-value>
+        </init-param>
+        <init-param>
+            <param-name>city</param-name>
+            <param-value>Rampur</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>Servlet2</servlet-name>
+        <servlet-class>contextConfig.Servlet2</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>Suresh</param-value>
+        </init-param>
+        <init-param>
+            <param-name>city</param-name>
+            <param-value>Solapur</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletLife</servlet-name>
@@ -23,23 +51,15 @@
         <url-pattern>/concept</url-pattern>
         <!--    External Alliase-->
     </servlet-mapping>
-   
-
-    
     <servlet-mapping>
-        <servlet-name>FetchMultipleInfo</servlet-name>
-        <url-pattern>/FetchMultipleInfo</url-pattern>
+        <servlet-name>Servlet1</servlet-name>
+        <url-pattern>/Servlet1</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>FetchMultiValue</servlet-name>
-        <servlet-class>clientToServer.FetchMultiValue</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>FetchMultiValue</servlet-name>
-        <url-pattern>/FetchMultiValue</url-pattern>
+        <servlet-name>Servlet2</servlet-name>
+        <url-pattern>/Servlet2</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>multiInfo.html</welcome-file>
+        <welcome-file>shopping.html</welcome-file>
     </welcome-file-list>
-
 </web-app>
