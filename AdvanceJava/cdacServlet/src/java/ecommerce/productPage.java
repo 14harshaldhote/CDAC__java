@@ -30,18 +30,7 @@ public class productPage extends HttpServlet {
 
             out.println("<title>Shopping Cart</title>");
             out.println("<style>");
-            out.println("body { font-family: 'Arial', sans-serif; margin: 20px; }");
-            out.println("h1 { color: #333; }");
-            out.println("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
-            out.println("table, th, td { border: 1px solid #333; }");
-            out.println("th, td { padding: 10px; text-align: left; }");
-            out.println(".mb-3 { margin-bottom: 15px; }");
-            out.println(".form-label { font-weight: bold; }");
-            out.println(".form-control { width: 100%; padding: 10px; box-sizing: border-box; }");
-            out.println(".btn { padding: 10px; cursor: pointer; }");
-            out.println(".btn-primary { background-color: #007bff; color: #fff; }");
-            out.println(".btn-success { background-color: #28a745; color: #fff; }");
-            out.println(".btn-danger { background-color: #dc3545; color: #fff; }");
+            // (Your CSS styles here)
             out.println("</style>");
             out.println("</head>");
 
@@ -53,12 +42,7 @@ public class productPage extends HttpServlet {
                 int quantity = 0;
 
                 if (quantityStr != null && !quantityStr.isEmpty()) {
-                    try {
-                        quantity = Integer.parseInt(quantityStr);
-                    } catch (NumberFormatException e) {
-                        out.println("<p>Invalid quantity input</p>");
-                        return;
-                    }
+                    quantity = Integer.parseInt(quantityStr);
                 }
 
                 if (productName != null && quantity > 0) {
@@ -85,7 +69,6 @@ public class productPage extends HttpServlet {
                 out.println("</table>");
                 out.println("<p>Total Bill: " + totalBill + "</p>");
             } else if (request.getParameter("logout") != null) {
-                // Invalidate the session and redirect to the login page
                 request.getSession().invalidate();
                 response.sendRedirect("login.html");
                 return;
@@ -113,9 +96,6 @@ public class productPage extends HttpServlet {
             out.println("<button type=\"submit\" name=\"logout\" class=\"btn btn-danger\">Logout</button>");
             out.println("</form>");
             out.println("</div>");
-
-            String cartInfo = serializeCart(shoppingCart);
-            response.addCookie(new jakarta.servlet.http.Cookie("shoppingCart", cartInfo));
 
             out.println("</body>");
             out.println("</html>");
@@ -145,14 +125,6 @@ public class productPage extends HttpServlet {
             default:
                 return 0;
         }
-    }
-
-    private String serializeCart(List<Product> shoppingCart) {
-        StringBuilder cartInfo = new StringBuilder();
-        for (Product product : shoppingCart) {
-            cartInfo.append(product.getName()).append(":").append(product.getQuantity()).append(",");
-        }
-        return cartInfo.toString();
     }
 
     @Override
