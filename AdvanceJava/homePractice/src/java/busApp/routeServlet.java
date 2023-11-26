@@ -2,59 +2,61 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package shopping;
+package busApp;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name="ecomShop",urlPatterns = "/ecomShop")
-public class ecomShop extends HttpServlet {
+@WebServlet(name="routeServlet", urlPatterns = "/routeServlet")
+public class routeServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        String source = request.getParameter("source");
+        String destination = request.getParameter("destination");
+        String busType = request.getParameter("busType");
+
+        
+        double distance = calculateDistance(source, destination);
+
+       
+        double fare = calculateFare(distance, busType);
+
         try (PrintWriter out = response.getWriter()) {
+           
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ecomShop</title>");            
+            out.println("<title>Route Information</title>");
             out.println("</head>");
             out.println("<body>");
-            
-            String proName=request.getParameter("pn");
-            String proQuan=request.getParameter("pq");
-            String but1=request.getParameter("atc");
-            String but2=request.getParameter("bill");
-            
-            if(but1 != null){
-//                Cookie ck=new Cookie(proName,proQuan);
-//                //ck.setMaxAge(-1);
-//                response.addCookie(ck);
-//                response.sendRedirect("shop.html");
-                   Cookie ck=new Cookie(proName,proQuan);
-                   ck.setMaxAge(60);
-                   response.addCookie(ck);
-                   response.sendRedirect("shop.html");
-                
-
-            }
-            if(but2 != null){
-                out.println("<h1>You have Purchased</h1>");
-                Cookie ck[]=request.getCookies();
-                for(Cookie c:ck){
-                    out.println(c.getName()+" : "+c.getValue()+"<br/>");
-                }
-            }
-            
+            out.println("<h2>Route Information:</h2>");
+            out.println("<p>Source: " + source + "</p>");
+            out.println("<p>Destination: " + destination + "</p>");
+            out.println("<p>Bus Type: " + (busType.equals("ac") ? "AC" : "Non-AC") + "</p>");
+            out.println("<p>Distance: " + distance + " km</p>");
+            out.println("<p>Fare: Rs. " + fare + "</p>");
             out.println("</body>");
             out.println("</html>");
         }
+    }
+
+    private double calculateDistance(String source, String destination) {
+        
+        return 500.0; 
+    }
+
+    private double calculateFare(double distance, String busType) {
+        
+        double rate = (busType.equals("ac")) ? 12.0 : 7.0;
+        return distance * rate;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

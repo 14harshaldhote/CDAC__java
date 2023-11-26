@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Reservation</title>
+</head>
+<body>
+    <h2>Bus Reservation</h2>
+    
+    <form action="routeServlet" method="post">
+        <label for="source">From:</label>
+        <select name="source" id="source">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Nagpur">Nagpur</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Pune">Pune</option>
+            <option value="Raipur">Raipur</option>
+        </select>
+
+        <label for="destination">To:</label>
+        <select name="destination" id="destination">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Nagpur">Nagpur</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Pune">Pune</option>
+            <option value="Raipur">Raipur</option>
+        </select>
+
+        <label for="busType">Bus Type:</label>
+        <select name="busType" id="busType">
+            <option value="AC">AC</option>
+            <option value="NonAC">Non AC</option>
+        </select>
+
+        <input type="submit" value="Search Buses">
+    </form>
+</body>
+</html>

@@ -2,54 +2,43 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package shopping;
+package busApp;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+@WebServlet(name="busLogin", urlPatterns = "/busLogin")
+public class busLogin extends HttpServlet {
 
-@WebServlet(name="ecomShop",urlPatterns = "/ecomShop")
-public class ecomShop extends HttpServlet {
-
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ecomShop</title>");            
+            out.println("<title>Servlet busLogin</title>");            
             out.println("</head>");
             out.println("<body>");
             
-            String proName=request.getParameter("pn");
-            String proQuan=request.getParameter("pq");
-            String but1=request.getParameter("atc");
-            String but2=request.getParameter("bill");
+            String user=request.getParameter("un");
+            String pass=request.getParameter("ps");
             
-            if(but1 != null){
-//                Cookie ck=new Cookie(proName,proQuan);
-//                //ck.setMaxAge(-1);
-//                response.addCookie(ck);
-//                response.sendRedirect("shop.html");
-                   Cookie ck=new Cookie(proName,proQuan);
-                   ck.setMaxAge(60);
-                   response.addCookie(ck);
-                   response.sendRedirect("shop.html");
+            if("yash".equals(user) && "ram".equals(pass)){
+                HttpSession s=request.getSession();
+                s.setAttribute("seassionUser",user);
                 
-
+                response.sendRedirect("busBooking.html");
             }
-            if(but2 != null){
-                out.println("<h1>You have Purchased</h1>");
-                Cookie ck[]=request.getCookies();
-                for(Cookie c:ck){
-                    out.println(c.getName()+" : "+c.getValue()+"<br/>");
-                }
+            else{
+                response.sendRedirect("loginS.html");
             }
             
             out.println("</body>");
