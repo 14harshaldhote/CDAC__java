@@ -52,6 +52,18 @@
         <servlet-name>busLogin</servlet-name>
         <servlet-class>busApp.busLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busSeat</servlet-name>
+        <servlet-class>busApp.busSeat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>busBooking</servlet-name>
+        <servlet-class>busApp.busBooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>busTicketServlet</servlet-name>
+        <servlet-class>busApp.busTicketServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Department</servlet-name>
         <url-pattern>/Department</url-pattern>
@@ -91,6 +103,18 @@
     <servlet-mapping>
         <servlet-name>busLogin</servlet-name>
         <url-pattern>/busLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busSeat</servlet-name>
+        <url-pattern>/busSeat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busBooking</servlet-name>
+        <url-pattern>/busBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busTicketServlet</servlet-name>
+        <url-pattern>/busTicketServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>busLogin.html</welcome-file>

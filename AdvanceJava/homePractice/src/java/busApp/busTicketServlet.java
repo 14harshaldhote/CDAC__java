@@ -9,12 +9,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "routeServlet", urlPatterns = "/routeServlet")
-public class routeServlet extends HttpServlet {
-
+@WebServlet(name = "busTicketServlet", urlPatterns = "/busTicketServlet")
+public class busTicketServlet extends HttpServlet {
     private static final double DELHI_MUMBAI_DISTANCE = 1220.0;
     private static final double DELHI_NAGPUR_DISTANCE = 1040.0;
     private static final double DELHI_BANGALORE_DISTANCE = 2540.0;
@@ -26,7 +26,7 @@ public class routeServlet extends HttpServlet {
     private static final double MUMBAI_RAIPUR_DISTANCE = 1050.0;
     private static final double NAGPUR_BANGALORE_DISTANCE = 1490.0;
     private static final double NAGPUR_PUNE_DISTANCE = 720.0;
-    private static final double NAGPUR_RAIPUR_DISTANCE = 280.0; 
+    private static final double NAGPUR_RAIPUR_DISTANCE = 280.0;
     private static final double BANGALORE_PUNE_DISTANCE = 1140.0;
     private static final double BANGALORE_RAIPUR_DISTANCE = 1470.0;
     private static final double PUNE_RAIPUR_DISTANCE = 1120.0;
@@ -34,34 +34,50 @@ public class routeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String source = request.getParameter("source");
-        String destination = request.getParameter("destination");
-        String busType = request.getParameter("busType");
-
-        double distance = calculateDistance(source, destination);
-        double fare = calculateFare(distance, busType);
-
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            System.out.println("source: " + session.getAttribute("source"));
+            System.out.println("destination: " + session.getAttribute("destination"));
+            System.out.println("busType: " + session.getAttribute("busType"));
+            System.out.println("numberOfSeats: " + session.getAttribute("numberOfSeats"));
+
+            String source = (String) session.getAttribute("source");
+            String destination = (String) session.getAttribute("destination");
+            String busType = (String) session.getAttribute("busType");
+
+
+            String numberOfSeatsStr = (String) session.getAttribute("numberOfSeats");
+            int numberOfSeats = (numberOfSeatsStr != null) ? Integer.parseInt(numberOfSeatsStr) : 0;
+
+            
+            double distance = calculateDistance(source, destination);
+
+           
+            double fare = calculateFare(distance, busType, numberOfSeats);
+
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Route Information</title>");
+            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h2>Route Information:</h2>");
-            out.println("<p>Source: " + source + "</p>");
-            out.println("<p>Destination: " + destination + "</p>");
-            out.println("<p>Bus Type: " + (busType.equals("ac") ? "AC" : "Non-AC") + "</p>");
-            out.println("<p>Distance: " + distance + " km</p>");
-            out.println("<p>Fare: Rs. " + fare + "</p>");
+            out.println("<div class='container'>");
+            out.println("<h2 class='text-center mt-4'>Bus Ticket</h2>");
+            out.println("<p><strong>Source:</strong> " + source + "</p>");
+            out.println("<p><strong>Destination:</strong> " + destination + "</p>");
+            out.println("<p><strong>Number of Seats:</strong> " + numberOfSeats + "</p>");
+            out.println("<p><strong>Distance:</strong> " + distance + " km</p>");
+            out.println("<p><strong>Fare:</strong> Rs. " + fare + "</p>");
+            
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
     private double calculateDistance(String source, String destination) {
-        
+
         switch (source.toLowerCase() + "_" + destination.toLowerCase()) {
             case "delhi_mumbai":
                 return DELHI_MUMBAI_DISTANCE;
@@ -94,13 +110,17 @@ public class routeServlet extends HttpServlet {
             case "pune_raipur":
                 return PUNE_RAIPUR_DISTANCE;
             default:
-                return 0.0; 
+                return 0.0;
         }
     }
 
-    private double calculateFare(double distance, String busType) {
+    private double calculateFare(double distance, String busType, int numberOfSeats) {
         double rate = (busType.equals("ac")) ? 7.0 : 3.0;
-        return distance * rate;
+        double baseFare = distance * rate;
+
+        
+
+        return baseFare * numberOfSeats ;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

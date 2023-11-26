@@ -12,35 +12,38 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-@WebServlet(name="busLogin", urlPatterns = "/busLogin")
+
+@WebServlet(name = "busLogin", urlPatterns = "/busLogin")
 public class busLogin extends HttpServlet {
 
- 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+         
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet busLogin</title>");            
+            out.println("<title>Servlet busLogin</title>");
             out.println("</head>");
             out.println("<body>");
-            
-            String user=request.getParameter("un");
-            String pass=request.getParameter("ps");
-            
-            if("yash".equals(user) && "ram".equals(pass)){
-                HttpSession s=request.getSession();
-                s.setAttribute("seassionUser",user);
-                
+
+            String user = request.getParameter("un");
+            String pass = request.getParameter("ps");
+
+            if ("yash".equals(user) && "ram".equals(pass)) {
+                HttpSession s = request.getSession();
+                s.setAttribute("seassionUser", user);
+
                 response.sendRedirect("busBooking.html");
+            } else {
+//                out.println("<script>alert('Please enter correct details');</script>");
+//                response.sendRedirect("loginS.html");
+                out.println("<script>alert('Please enter correct details');</script>");
+                out.println("<script>setTimeout(function(){ window.location.href='busLogin.html'; }, 1);</script>");
+
             }
-            else{
-                response.sendRedirect("loginS.html");
-            }
-            
+
             out.println("</body>");
             out.println("</html>");
         }
