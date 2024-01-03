@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Admin</title>
+</head>
+<body>
+
+    <h2>Edit Admin</h2>
+
+    <!-- Form to edit admin information -->
+    <form th:action="@{/home/admin/update/{adminId}(adminId=${admin.id})}" method="post">
+        <label>Username: <input type="text" name="username" th:value="${admin.username}"></label><br>
+        <input type="submit" value="Update">
+    </form>
+
+    <!-- Add link to go back to the admin details page -->
+    <p><a th:href="@{/home/admin/{adminId}(adminId=${admin.id})}">Back to Admin Details</a></p>
+
+</body>
+</html>

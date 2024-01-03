@@ -33,6 +33,11 @@
     <artifactId>tomcat-embed-jasper</artifactId>
 </dependency>
 
+		<dependency>
+			<groupId>com.dac.security</groupId>
+			<artifactId>BootSecurity</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

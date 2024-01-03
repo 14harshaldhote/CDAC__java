@@ -7,7 +7,10 @@ const UserList = () => {
 
   useEffect(() => {
     axios.get('http://localhost:8888/api/users')
-      .then(response => setUsers(response.data))
+      //.then(response => setUsers(response.data))
+      .then(response => {setUsers(response.data)
+      setFlag=true
+      })
       .catch(error => console.error('Error fetching users:', error));
   }, []);
 

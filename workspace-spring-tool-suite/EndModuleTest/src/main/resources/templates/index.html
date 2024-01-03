@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+
+    <h2>Welcome to the Home Page</h2>
+
+    <!-- Display user and admin information -->
+    <p th:if="${user}" th:text="${'User: ' + user.username}"></p>
+    <p th:if="${admin}" th:text="${'Admin: ' + admin.username}"></p>
+
+    <!-- Add links to user and admin details pages -->
+    <p><a th:if="${user}" th:href="@{/home/user/{userId}(userId=${user.id})}">View User Details</a></p>
+    <p><a th:if="${user}" th:href="@{/home/user/edit/{userId}(userId=${user.id})}">Edit User</a></p>
+    <p><a th:if="${admin}" th:href="@{/home/admin/{adminId}(adminId=${admin.id})}">View Admin Details</a></p>
+    <p><a th:if="${admin}" th:href="@{/home/admin/edit/{adminId}(adminId=${admin.id})}">Edit Admin</a></p>
+
+</body>
+</html>
